@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的切片珍藏合集 🎬</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { background-color: #1a1a1a; color: #fff; font-family: sans-serif; margin: 0; padding: 20px; text-align: center; }
+        h2 { font-size: 1.3rem; margin-bottom: 20px; color: #00a1d6; }
+        .main-layout { display: block; max-width: 900px; margin: 0 auto; background: #262626; border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); }
+        .video-container { width: 100%; background: #000; border-radius: 8px; overflow: hidden; margin-bottom: 15px; }
+        video { width: 100%; display: block; }
+        .playlist { width: 100%; text-align: left; background: #333; padding: 12px; border-radius: 8px; }
+        .playlist h3 { margin: 0 0 10px 0; font-size: 1rem; color: #aaa; border-bottom: 1px solid #444; padding-bottom: 8px; }
+        .playlist-item { padding: 12px; margin-bottom: 8px; background: #444; border-radius: 6px; cursor: pointer; transition: 0.2s; font-size: 0.9rem; }
+        .playlist-item:hover { background: #555; }
+        .playlist-item.active { background: #00a1d6; color: #fff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>我的切片在线合集库 🎬</h2>
+    
+    <div class="main-layout">
+        <div class="video-container">
+            <video id="main-player" controls preload="auto" src="01.mp4"></video>
+        </div>
+        
+        <div class="playlist">
+            <h3>视频列表</h3>
+            <div class="playlist-item active" onclick="changeVideo('01.mp4', this)">【01】测试切片视频（请确保仓库里有 01.mp4）</div>
+            <div class="playlist-item" onclick="changeVideo('02.mp4', this)">【02】第二个切片视频标题（暂未上传时点击会黑屏）</div>
+        </div>
+    </div>
+
+    <script>
+        function changeVideo(videoSrc, element) {
+            var player = document.getElementById('main-player');
+            player.src = videoSrc;
+            player.play();
+            document.querySelectorAll('.playlist-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
